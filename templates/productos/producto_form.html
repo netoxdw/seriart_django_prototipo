@@ -1,0 +1,16 @@
+<!-- templates/productos/producto_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if object %}Editar{% else %}Crear{% endif %} Producto</title>
+</head>
+<body>
+    <h1>{% if object %}Editar{% else %}Crear{% endif %} Producto</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="{% url 'productos-list' %}">Cancelar</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!-- fotos/templates/fotos/generaciones_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Generaciones</title>
+</head>
+<body>
+    <h1>Generaciones</h1>
+    <a href="{% url 'generaciones-create' %}">Crear Nueva Generación</a>
+    <ul>
+        {% for generacion in generaciones %}
+            <li>
+                <a href="{% url 'escuelas-list' generacion.id %}">{{ generacion.año }}</a>
+                <a href="{% url 'generaciones-update' generacion.pk %}">Editar</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

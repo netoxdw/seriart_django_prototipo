@@ -1,0 +1,23 @@
+<!-- fotos/templates/fotos/escuela_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Escuelas de {{ generacion.año }}</title>
+</head>
+<body>
+    <h1>Escuelas de la Generación {{ generacion.año }}</h1>
+    <a href="{% url 'escuelas-create' generacion.id %}">Agregar Escuela</a>
+    <ul>
+        {% for escuela in escuelas %}
+            <li>
+                <p>
+                <a href="{% url 'grupos-list' escuela.id %}">{{ escuela.nombre }}</a>
+                    {{ escuela.ciudad }} - {{ escuela.nivel}} -- {{ escuela.generacion }}
+                </p>
+                <a href="{% url 'escuelas-update' escuela.id %}">Editar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'generaciones-list' %}">Volver a Generaciones</a>
+</body>
+</html>

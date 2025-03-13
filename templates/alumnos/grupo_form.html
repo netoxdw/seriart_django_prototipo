@@ -1,0 +1,16 @@
+<!-- fotos/templates/fotos/grupo_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if object %}Editar{% else %}Crear{% endif %} Grupo</title>
+</head>
+<body>
+    <h1>{% if object %}Editar{% else %}Crear{% endif %} Grupo en {{ escuela.nombre }} (Generación {{ generacion.año }})</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="{% url 'grupos-list' escuela.id %}">Cancelar</a>
+</body>
+</html>

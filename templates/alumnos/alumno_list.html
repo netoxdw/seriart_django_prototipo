@@ -1,0 +1,22 @@
+<!-- fotos/templates/fotos/alumno_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alumnos de {{ grupo.nombre }}</title>
+</head>
+<body>
+    <h1>Alumnos de {{ grupo.nombre }} ({{ escuela.nombre }} - Generación {{ generacion.año }})</h1>
+    <a href="{% url 'alumnos-create' grupo.id %}">Agregar Alumno</a>
+    <ul>
+        {% for alumno in alumnos %}
+            <li>
+                {{ alumno.nombre }}
+                {% if alumno.telefono %} - Teléfono: {{ alumno.telefono }}{% endif %}
+                {% if alumno.folio_camara %} - Folio de Cámara: {{ alumno.folio_camara }}{% endif %}
+                <a href="{% url 'alumnos-update' alumno.id %}">Editar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'grupos-list' escuela.id %}">Volver a Grupos</a>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!-- fotos/templates/fotos/grupo_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grupos de {{ escuela.nombre }}</title>
+</head>
+<body>
+    <h1>Grupos de {{ escuela.nombre }} (Generación {{ generacion.año }})</h1>
+    <a href="{% url 'grupos-create' escuela.id %}">Agregar Grupo</a>
+    <ul>
+        {% for grupo in grupos %}
+            <li>
+                <a href="{% url 'alumnos-list' grupo.id %}">{{ grupo.nombre }}</a>
+                {% if grupo.mes_graduacion %} - Mes de Graduación: {{ grupo.mes_graduacion }}{% endif %}
+                {{ grupo.generacion }}
+                <a href="{% url 'grupos-update' grupo.id %}">Editar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'escuelas-list' escuela.generacion.id %}">Volver a Escuelas</a>
+</body>
+</html>
